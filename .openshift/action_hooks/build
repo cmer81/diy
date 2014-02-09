@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -x
+
+mkdir -p ${OPENSHIFT_DATA_DIR}/m2/repository
+
+echo -e "<settings><localRepository>${OPENSHIFT_DATA_DIR}m2/repository</localRepository>\n</settings>\n" > ${OPENSHIFT_DATA_DIR}settings.xml
+
+#
+
+cd ${OPENSHIFT_REPO_DIR}
+echo "start maven build . "
+mvn -Dmaven.test.skip=true -s ${OPENSHIFT_DATA_DIR}settings.xml clean package -Popenshift

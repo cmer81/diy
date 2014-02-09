@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -x
+
+. "${OPENSHIFT_REPO_DIR}.openshift/config/tomcat.conf"
+
+echo "Start deploying..."
+
+if [ -d $OPENSHIFT_DATA_DIR/$TOMCAT_DIR_NAME ]
+then
+    exit 0
+else
+    cd $OPENSHIFT_DATA_DIR/$TOMCAT_DIR_NAME
+    rm -rf logs
+    ln -s $OPENSHIFT_DIY_LOG_DIR logs
+fi

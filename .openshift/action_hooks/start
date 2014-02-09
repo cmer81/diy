@@ -1,0 +1,12 @@
+#!/bin/bash
+# The logic to start up your application should be put in this
+# script. The application will work only if it binds to
+# $OPENSHIFT_DIY_IP:8080 and OPENSHIFT_APP_DNS
+
+. "${OPENSHIFT_REPO_DIR}.openshift/config/tomcat.conf"
+
+set -x
+
+cd $OPENSHIFT_DATA_DIR/$TOMCAT_DIR_NAME
+
+bin/startup.sh

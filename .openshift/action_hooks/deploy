@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -x
+
+. "${OPENSHIFT_REPO_DIR}.openshift/config/tomcat.conf"
+
+rm -rf ${OPENSHIFT_DATA_DIR}${TOMCAT_DIR_NAME}/webapps/ROOT
+
+rm -f ${OPENSHIFT_DATA_DIR}${TOMCAT_DIR_NAME}/webapps/ROOT.war
+
+cp ${OPENSHIFT_REPO_DIR}deployments/ROOT.war ${OPENSHIFT_DATA_DIR}${TOMCAT_DIR_NAME}/webapps/
